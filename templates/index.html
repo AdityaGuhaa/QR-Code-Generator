@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
     <title>QR Code Generator</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
@@ -13,7 +12,14 @@
         <h1>🔗 QR Code Generator</h1>
 
         <form method="POST">
-            <input type="text" name="url" placeholder="Enter URL (https://example.com)" required>
+            <input type="text" name="url" placeholder="https://example.com" required>
+
+            <label>QR Color</label>
+            <input type="color" name="fill_color" value="#000000">
+
+            <label>Background</label>
+            <input type="color" name="back_color" value="#ffffff">
+
             <button type="submit">Generate QR</button>
         </form>
 
@@ -22,10 +28,19 @@
         {% endif %}
 
         {% if qr_path %}
-        <h2>Your QR Code</h2>
-        <img src="{{ qr_path }}" alt="QR Code">
+        <h3>Your QR Code</h3>
+        <img src="{{ qr_path }}">
         <br>
-        <a href="{{ qr_path }}" download>Download QR Code</a>
+        <a href="{{ qr_path }}" download>Download</a>
+        {% endif %}
+
+        {% if history %}
+        <h3>Session History</h3>
+        <div class="history">
+            {% for qr in history %}
+            <img src="{{ qr }}">
+            {% endfor %}
+        </div>
         {% endif %}
     </div>
 
