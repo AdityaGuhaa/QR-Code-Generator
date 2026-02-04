@@ -1,33 +1,38 @@
 body {
     font-family: Arial, sans-serif;
-    background: #f4f6f8;
+    background: #f5f6f7;
 }
 
 .container {
-    width: 400px;
+    width: 380px;
     margin: 80px auto;
     padding: 25px;
     background: white;
-    border-radius: 10px;
+    border-radius: 12px;
     text-align: center;
 }
 
 input {
     width: 100%;
     padding: 10px;
-    margin: 10px 0;
+    margin: 12px 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
 }
 
 button {
-    padding: 10px 15px;
+    padding: 10px 16px;
     cursor: pointer;
+    border-radius: 6px;
 }
 
-.qr-box img {
+img {
     width: 200px;
     margin-top: 15px;
 }
 
 .error {
-    color: red;
+    color: #d9534f;
+    margin-top: 10px;
+    font-weight: bold;
 }

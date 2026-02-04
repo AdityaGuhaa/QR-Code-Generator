@@ -1,7 +1,14 @@
 from flask import Flask, render_template, request
+from urllib.parse import urlparse
 from utils.qr_generator import generate_qr
 
 app = Flask(__name__)
+
+
+def is_valid_url(url: str) -> bool:
+    parsed = urlparse(url)
+    return parsed.scheme in ("http", "https") and bool(parsed.netloc)
+
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -9,10 +16,12 @@ def index():
     error = None
 
     if request.method == "POST":
-        url = request.form.get("url")
+        url = request.form.get("url", "").strip()
 
         if not url:
-            error = "Please enter a valid URL."
+            error = "URL cannot be empty."
+        elif not is_valid_url(url):
+            error = "Please enter a valid URL starting with http:// or https://"
         else:
             qr_path = generate_qr(url)
 

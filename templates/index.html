@@ -22,11 +22,10 @@
         {% endif %}
 
         {% if qr_path %}
-        <div class="qr-box">
-            <h3>Your QR Code</h3>
-            <img src="{{ qr_path }}" alt="Generated QR Code">
-            <a href="{{ qr_path }}" download>Download QR Code</a>
-        </div>
+        <h2>Your QR Code</h2>
+        <img src="{{ qr_path }}" alt="QR Code">
+        <br>
+        <a href="{{ qr_path }}" download>Download QR Code</a>
         {% endif %}
     </div>
 
